@@ -46,7 +46,7 @@ export default function AboutHero() {
               </Link>
             ))}
             <a
-              href="/uploads/Yahia_Hammad_CV.pdf"
+              href="/projects/Yahia_Hammad_CV.docx"
               download
               className="text-[13px] text-[var(--color-muted)] hover:text-[var(--color-text)] transition-colors duration-150 max-[640px]:hidden"
             >
@@ -102,7 +102,7 @@ export default function AboutHero() {
                 </Link>
               ))}
               <a
-                href="/uploads/Yahia_Hammad_CV.pdf"
+                href="/projects/Yahia_Hammad_CV.docx"
                 download
                 onClick={closeMenu}
                 className="text-[13px] text-[var(--color-muted)] hover:text-[var(--color-text)] transition-colors duration-150 py-[13px] border-b border-[var(--color-border)]"

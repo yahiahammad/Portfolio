@@ -199,7 +199,7 @@ export default function HomeHero() {
               )
             )}
             <a
-              href="/uploads/Yahia_Hammad_CV.pdf"
+              href="/projects/Yahia_Hammad_CV.docx"
               download
               className="text-[13px] text-[var(--color-muted)] hover:text-[var(--color-text)] transition-colors duration-150 max-[640px]:hidden"
             >
@@ -256,7 +256,7 @@ export default function HomeHero() {
                 )
               )}
               <a
-                href="/uploads/Yahia_Hammad_CV.pdf"
+                href="/projects/Yahia_Hammad_CV.docx"
                 download
                 onClick={closeMenu}
                 className="text-[13px] text-[var(--color-muted)] hover:text-[var(--color-text)] transition-colors duration-150 py-[13px] border-b border-[var(--color-border)]"
@@ -349,7 +349,7 @@ export default function HomeHero() {
                   </svg>
                 </a>
                 <a
-                  href="/uploads/Yahia_Hammad_CV.pdf"
+                  href="/projects/Yahia_Hammad_CV.docx"
                   download
                   className="inline-flex items-center gap-[7px] px-[22px] py-[10px] bg-transparent text-[var(--color-text)] text-[14px] border border-[var(--color-border-s)] rounded-[4px] hover:border-[var(--color-accent-border)] hover:bg-[var(--color-accent-dim)] hover:-translate-y-px transition-all duration-[180ms]"
                 >

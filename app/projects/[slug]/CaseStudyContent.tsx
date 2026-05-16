@@ -471,7 +471,7 @@ export default function CaseStudyContent({ study, nextStudy }: { study: CaseStud
               {[
                 { label: "github", href: "https://github.com/yahiahammad" },
                 { label: "portfolio", href: "/" },
-                { label: "cv.pdf", href: "/uploads/Yahia_Hammad_CV.pdf", download: true },
+                { label: "cv.pdf", href: "/projects/Yahia_Hammad_CV.docx", download: true },
               ].map((l) => (
                 <a
                   key={l.label}

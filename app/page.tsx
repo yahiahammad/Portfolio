@@ -52,7 +52,7 @@ export default function Home() {
               {[
                 { label: "github", href: "https://github.com/yahiahammad" },
                 { label: "about", href: "/about" },
-                { label: "cv.pdf", href: "/uploads/Yahia_Hammad_CV.pdf", download: true },
+                { label: "cv.pdf", href: "/projects/Yahia_Hammad_CV.docx", download: true },
               ].map((l) => (
                 <a
                   key={l.label}

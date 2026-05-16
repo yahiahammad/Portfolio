@@ -1,7 +1,7 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
-import { useRef, useState } from "react";
+import { motion } from "framer-motion";
+import { useState } from "react";
 import type { IconType } from "react-icons";
 import {
   SiApachespark,
@@ -241,14 +241,11 @@ function SkillRow({
   index: number;
   activeProject: string | null;
 }) {
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-40px" });
-
   return (
     <motion.div
-      ref={ref}
       initial={{ opacity: 0, x: -6 }}
-      animate={inView ? { opacity: 1, x: 0 } : {}}
+      whileInView={{ opacity: 1, x: 0 }}
+      viewport={{ once: true, margin: "-20px" }}
       transition={{ duration: 0.4, delay: index * 0.06, ease: [0.4, 0, 0.2, 1] }}
       className="grid grid-cols-[140px_1fr] gap-x-9 py-[26px] border-t border-[var(--color-border)] last:border-b max-[640px]:grid-cols-1 max-[640px]:gap-y-[14px]"
     >

@@ -31,7 +31,7 @@ const LINKS = [
   },
   {
     label: "cv.pdf",
-    href: "/uploads/Yahia_Hammad_CV.pdf",
+    href: "/projects/Yahia_Hammad_CV.docx",
     icon: (
       <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
         <path
