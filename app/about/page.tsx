@@ -18,13 +18,13 @@ export default function AboutPage() {
 
       <div className="relative z-10">
         {/* Nav + page header */}
-        <div className="max-w-[1180px] mx-auto px-14">
+        <div className="max-w-[1180px] mx-auto px-14 max-[640px]:px-6">
           <AboutHero />
         </div>
 
         {/* Two-column layout: bio (sticky left) + timeline (right) */}
-        <div className="max-w-[1180px] mx-auto px-14">
-          <div className="grid grid-cols-[300px_1fr] gap-[72px] pt-16 pb-28 items-start max-[860px]:grid-cols-1 max-[860px]:gap-12 max-[640px]:px-6">
+        <div className="max-w-[1180px] mx-auto px-14 max-[640px]:px-6">
+          <div className="grid grid-cols-[300px_1fr] gap-[72px] pt-16 pb-28 items-start max-[860px]:grid-cols-1 max-[860px]:gap-12">
             <BioColumn />
             <Timeline />
           </div>

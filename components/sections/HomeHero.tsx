@@ -274,7 +274,7 @@ export default function HomeHero() {
 
       <section id="main-content" className="min-h-screen flex items-center pt-[54px]">
         <div className="max-w-[1180px] mx-auto px-14 w-full max-[640px]:px-6">
-          <div className="py-16 grid items-center gap-16 max-[900px]:grid-cols-1 max-[900px]:gap-10" style={{ gridTemplateColumns: "1fr 400px" }}>
+          <div className="py-16 grid grid-cols-[1fr_400px] items-center gap-16 max-[900px]:grid-cols-1 max-[900px]:gap-10">
 
             {/* Left — text content */}
             <div>

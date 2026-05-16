@@ -335,10 +335,7 @@ function CaseStudyBody({ study }: { study: CaseStudy }) {
       </CSSection>
 
       <CSSection id="outcome" eyebrow="// 05" title="Outcome">
-        <div
-          className="grid gap-px bg-[var(--color-border)] border border-[var(--color-border)] mb-[28px]"
-          style={{ gridTemplateColumns: "repeat(4, 1fr)" }}
-        >
+        <div className="grid grid-cols-4 max-[640px]:grid-cols-2 gap-px bg-[var(--color-border)] border border-[var(--color-border)] mb-[28px]">
           {study.metrics.map((m, i) => (
             <div key={i} className="bg-[var(--color-bg)] px-6 py-[22px]">
               <div className="font-mono text-[28px] font-bold text-[var(--color-accent)] tracking-[-0.02em] leading-none mb-2">
@@ -458,10 +455,7 @@ export default function CaseStudyContent({ study, nextStudy }: { study: CaseStud
         <MetaBar study={study} />
 
         {/* Content + TOC */}
-        <div
-          className="max-w-[1180px] mx-auto px-14 py-[80px] pb-[110px] grid gap-[88px] items-start max-[960px]:grid-cols-1 max-[960px]:gap-0 max-[640px]:px-6"
-          style={{ gridTemplateColumns: "1fr 216px" }}
-        >
+        <div className="max-w-[1180px] mx-auto px-14 py-[80px] pb-[110px] grid grid-cols-[1fr_216px] gap-[88px] items-start max-[960px]:grid-cols-1 max-[960px]:gap-0 max-[640px]:px-6">
           <main>
             <CaseStudyBody study={study} />
           </main>

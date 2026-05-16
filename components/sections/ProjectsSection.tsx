@@ -34,10 +34,7 @@ function ProjectCard({
 
       {showFeaturedLayout ? (
         /* Featured: image left | content right */
-        <div
-          className="grid max-[768px]:grid-cols-1"
-          style={{ gridTemplateColumns: "55% 45%" }}
-        >
+        <div className="grid grid-cols-[55%_45%] max-[768px]:grid-cols-1">
           <div className="relative h-[340px] max-[768px]:h-[220px] border-r border-[var(--color-border)] max-[768px]:border-r-0 max-[768px]:border-b max-[768px]:border-[var(--color-border)] overflow-hidden bg-[var(--color-surface)]">
             <Image
               src={project.image!}

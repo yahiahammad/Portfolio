@@ -52,8 +52,8 @@ export default function ContactSection() {
       id="contact"
       className="border-t border-[var(--color-border)] bg-[var(--color-surface)]"
     >
-      <div className="max-w-[1180px] mx-auto px-14 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-20 items-start">
+      <div className="max-w-[1180px] mx-auto px-14 max-[640px]:px-6 py-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-20 max-[640px]:gap-12 items-start">
           {/* Left — info + channels */}
           <motion.div
             initial={{ opacity: 0, y: 16 }}
