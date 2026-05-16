@@ -1,0 +1,142 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 340" width="800" height="340">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#080809"/>
+      <stop offset="100%" stop-color="#0a0a10"/>
+    </linearGradient>
+    <radialGradient id="accentGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.07"/>
+      <stop offset="100%" stop-color="#3b82f6" stop-opacity="0"/>
+    </radialGradient>
+    <clipPath id="sc">
+      <rect x="86" y="22" width="628" height="242"/>
+    </clipPath>
+  </defs>
+
+  <!-- Page background -->
+  <rect width="800" height="340" fill="url(#bg)"/>
+  <rect width="800" height="340" fill="url(#accentGlow)"/>
+
+  <!-- ── Monitor body ── -->
+  <rect x="70" y="8" width="660" height="272" rx="8" fill="#111113" stroke="#1a1a1e" stroke-width="1"/>
+
+  <!-- Screen surface -->
+  <rect x="86" y="22" width="628" height="242" fill="#060609"/>
+
+  <!-- ── Screen content (clipped) ── -->
+  <g clip-path="url(#sc)">
+
+    <!-- ── Skeleton bones ── -->
+    <!-- Neck -->
+    <line x1="350" y1="64" x2="350" y2="83" stroke="#3b82f6" stroke-width="1.8" opacity="0.8"/>
+    <!-- Collarbone -->
+    <line x1="316" y1="83" x2="384" y2="83" stroke="#3b82f6" stroke-width="1.8" opacity="0.8"/>
+    <!-- Left torso -->
+    <line x1="316" y1="83" x2="323" y2="196" stroke="#3b82f6" stroke-width="1.8" opacity="0.8"/>
+    <!-- Right torso -->
+    <line x1="384" y1="83" x2="377" y2="196" stroke="#3b82f6" stroke-width="1.8" opacity="0.8"/>
+    <!-- Hip bar -->
+    <line x1="323" y1="196" x2="377" y2="196" stroke="#3b82f6" stroke-width="1.8" opacity="0.8"/>
+    <!-- Left arm (resting down) -->
+    <line x1="316" y1="83" x2="297" y2="138" stroke="#3b82f6" stroke-width="1.8" opacity="0.7"/>
+    <line x1="297" y1="138" x2="289" y2="192" stroke="#3b82f6" stroke-width="1.8" opacity="0.7"/>
+    <!-- Right arm (active — bicep curl up) -->
+    <line x1="384" y1="83" x2="410" y2="128" stroke="#60a5fa" stroke-width="2.3" opacity="1"/>
+    <line x1="410" y1="128" x2="424" y2="90" stroke="#60a5fa" stroke-width="2.3" opacity="1"/>
+    <!-- Left leg -->
+    <line x1="323" y1="196" x2="316" y2="240" stroke="#3b82f6" stroke-width="1.8" opacity="0.8"/>
+    <line x1="316" y1="240" x2="309" y2="258" stroke="#3b82f6" stroke-width="1.8" opacity="0.8"/>
+    <!-- Right leg -->
+    <line x1="377" y1="196" x2="370" y2="240" stroke="#3b82f6" stroke-width="1.8" opacity="0.8"/>
+    <line x1="370" y1="240" x2="363" y2="258" stroke="#3b82f6" stroke-width="1.8" opacity="0.8"/>
+
+    <!-- ── Skeleton joints ── -->
+    <circle cx="316" cy="83"  r="3.5" fill="#60a5fa" opacity="0.9"/>
+    <circle cx="384" cy="83"  r="3.5" fill="#60a5fa" opacity="0.9"/>
+    <circle cx="297" cy="138" r="3.5" fill="#60a5fa" opacity="0.75"/>
+    <!-- Active elbow glow -->
+    <circle cx="410" cy="128" r="10" fill="#3b82f6" opacity="0.12"/>
+    <circle cx="410" cy="128" r="5"  fill="#60a5fa" opacity="1"/>
+    <circle cx="289" cy="192" r="3"  fill="#60a5fa" opacity="0.75"/>
+    <circle cx="424" cy="90"  r="3"  fill="#60a5fa" opacity="0.9"/>
+    <circle cx="323" cy="196" r="3.5" fill="#60a5fa" opacity="0.9"/>
+    <circle cx="377" cy="196" r="3.5" fill="#60a5fa" opacity="0.9"/>
+    <circle cx="316" cy="240" r="3.5" fill="#60a5fa" opacity="0.9"/>
+    <circle cx="370" cy="240" r="3.5" fill="#60a5fa" opacity="0.9"/>
+    <circle cx="309" cy="258" r="3"  fill="#60a5fa" opacity="0.8"/>
+    <circle cx="363" cy="258" r="3"  fill="#60a5fa" opacity="0.8"/>
+    <!-- Head -->
+    <circle cx="350" cy="50" r="14" fill="none" stroke="#60a5fa" stroke-width="1.5" opacity="0.8"/>
+    <circle cx="344" cy="47" r="1.5" fill="#60a5fa" opacity="0.45"/>
+    <circle cx="356" cy="47" r="1.5" fill="#60a5fa" opacity="0.45"/>
+
+    <!-- Elbow angle arc + label -->
+    <path d="M 402 114 A 16 16 0 0 0 416 113" fill="none" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="3 2" opacity="0.85"/>
+    <text x="430" y="122" font-family="'Courier New', monospace" font-size="9" fill="#f59e0b" opacity="0.9" letter-spacing="0.04em">52°</text>
+
+    <!-- ── HUD top-left ── -->
+    <text x="96" y="40" font-family="'Courier New', monospace" font-size="7.5" fill="#3b82f6" letter-spacing="0.12em" opacity="0.65">MEDIAPIPE POSE</text>
+    <text x="96" y="52" font-family="'Courier New', monospace" font-size="6.5" fill="#374151" letter-spacing="0.06em">30 FPS · 33 KEYPOINTS</text>
+
+    <!-- REC indicator -->
+    <circle cx="677" cy="35" r="3.5" fill="#ef4444" opacity="0.8"/>
+    <text x="685" y="39" font-family="'Courier New', monospace" font-size="7.5" fill="#9ca3af" letter-spacing="0.08em">REC</text>
+
+    <!-- CV-style corner brackets -->
+    <path d="M 86 22 L 86 36 M 86 22 L 102 22" stroke="#3b82f6" stroke-width="1" fill="none" opacity="0.28"/>
+    <path d="M 714 22 L 714 36 M 714 22 L 698 22" stroke="#3b82f6" stroke-width="1" fill="none" opacity="0.28"/>
+    <path d="M 86 263 L 86 249 M 86 263 L 102 263" stroke="#3b82f6" stroke-width="1" fill="none" opacity="0.28"/>
+    <path d="M 714 263 L 714 249 M 714 263 L 698 263" stroke="#3b82f6" stroke-width="1" fill="none" opacity="0.28"/>
+
+    <!-- ── Stats panel ── -->
+    <rect x="548" y="36" width="152" height="212" rx="3" fill="#080809" fill-opacity="0.9" stroke="#1c1c24" stroke-width="1"/>
+    <rect x="548" y="36" width="152" height="2.5" rx="1.5" fill="#3b82f6" opacity="0.85"/>
+
+    <!-- Exercise -->
+    <text x="560" y="54"  font-family="'Courier New', monospace" font-size="6.5" fill="#4b5563" letter-spacing="0.12em">EXERCISE</text>
+    <text x="560" y="67"  font-family="'Courier New', monospace" font-size="10"  fill="#f1f1f3" letter-spacing="0.02em">BICEP CURL</text>
+    <line x1="560" y1="76" x2="690" y2="76" stroke="#1c1c24" stroke-width="1"/>
+
+    <!-- Reps -->
+    <text x="560" y="91"  font-family="'Courier New', monospace" font-size="6.5" fill="#4b5563" letter-spacing="0.12em">REPS</text>
+    <text x="558" y="122" font-family="'Courier New', monospace" font-size="36" font-weight="700" fill="#3b82f6">12</text>
+    <line x1="560" y1="131" x2="690" y2="131" stroke="#1c1c24" stroke-width="1"/>
+
+    <!-- Stage -->
+    <text x="560" y="145" font-family="'Courier New', monospace" font-size="6.5" fill="#4b5563" letter-spacing="0.12em">STAGE</text>
+    <text x="560" y="159" font-family="'Courier New', monospace" font-size="10"  fill="#10b981" letter-spacing="0.08em">▲ UP</text>
+    <line x1="560" y1="167" x2="690" y2="167" stroke="#1c1c24" stroke-width="1"/>
+
+    <!-- Form -->
+    <text x="560" y="181" font-family="'Courier New', monospace" font-size="6.5" fill="#4b5563" letter-spacing="0.12em">FORM</text>
+    <text x="560" y="195" font-family="'Courier New', monospace" font-size="9"   fill="#10b981">&#x2713; GOOD FORM</text>
+    <line x1="560" y1="203" x2="690" y2="203" stroke="#1c1c24" stroke-width="1"/>
+
+    <!-- Progress -->
+    <text x="560" y="216" font-family="'Courier New', monospace" font-size="6.5" fill="#4b5563" letter-spacing="0.12em">PROGRESS</text>
+    <rect x="560" y="221" width="120" height="3.5" rx="2" fill="#1c1c24"/>
+    <rect x="560" y="221" width="96"  height="3.5" rx="2" fill="#3b82f6" fill-opacity="0.7"/>
+    <text x="560" y="235" font-family="'Courier New', monospace" font-size="6.5" fill="#374151">12 / 15 reps · set 2/3</text>
+
+    <!-- Bottom status bar -->
+    <rect x="86" y="249" width="628" height="15" fill="#050507" fill-opacity="0.9"/>
+    <text x="96"  y="259" font-family="'Courier New', monospace" font-size="7"   fill="#3b82f6" letter-spacing="0.1em" opacity="0.6">AI FITNESS TRACKER</text>
+    <text x="578" y="259" font-family="'Courier New', monospace" font-size="6.5" fill="#374151" letter-spacing="0.04em">OPENCV 4.8 · MEDIAPIPE</text>
+
+  </g>
+
+  <!-- Screen inner edge shadow -->
+  <rect x="86" y="22" width="628" height="242" fill="none" stroke="#000" stroke-width="2" opacity="0.55"/>
+
+  <!-- Monitor bottom strip -->
+  <rect x="70" y="272" width="660" height="8" rx="0" fill="#0d0d10" opacity="0.6"/>
+
+  <!-- Stand neck -->
+  <rect x="383" y="280" width="34" height="30" rx="2" fill="#111113"/>
+
+  <!-- Stand base -->
+  <rect x="308" y="308" width="184" height="12" rx="4" fill="#111113" stroke="#1a1a1e" stroke-width="1"/>
+
+  <!-- Power LED -->
+  <circle cx="400" cy="284" r="2" fill="#3b82f6" opacity="0.5"/>
+</svg>
