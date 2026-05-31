@@ -24,7 +24,7 @@ export default function Home() {
           right: "-200px",
           width: "860px",
           height: "860px",
-          background: "radial-gradient(circle, var(--color-accent-glow) 0%, transparent 65%)",
+          background: "radial-gradient(circle, rgba(59,130,246,0.07) 0%, transparent 65%)",
         }}
       />
       {/* Purple glow — bottom left */}
@@ -35,7 +35,7 @@ export default function Home() {
           left: "-180px",
           width: "700px",
           height: "700px",
-          background: "radial-gradient(circle, rgba(124, 58, 237, 0.045) 0%, transparent 65%)",
+          background: "radial-gradient(circle, rgba(124, 58, 237, 0.05) 0%, transparent 65%)",
         }}
       />
 
@@ -52,7 +52,7 @@ export default function Home() {
               {[
                 { label: "github", href: "https://github.com/yahiahammad" },
                 { label: "about", href: "/about" },
-                { label: "cv.pdf", href: "/projects/Yahia_Hammad_CV.docx", download: true },
+                { label: "cv.pdf", href: "/projects/Yahia_Hammad_CV.pdf", download: true },
               ].map((l) => (
                 <a
                   key={l.label}
@@ -60,7 +60,7 @@ export default function Home() {
                   download={l.download}
                   target={l.href.startsWith("http") ? "_blank" : undefined}
                   rel={l.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                  className="font-mono text-[11px] text-[var(--color-dim)] tracking-[0.04em] hover:text-[var(--color-accent)] transition-colors duration-150"
+                  className="font-mono text-[11px] text-[var(--color-muted)] tracking-[0.04em] hover:text-[var(--color-accent)] transition-colors duration-150"
                 >
                   {l.label}
                 </a>

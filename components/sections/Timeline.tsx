@@ -24,12 +24,12 @@ function TimelineEntry({
       transition={{ duration: 0.45, delay, ease: [0.4, 0, 0.2, 1] }}
       className="relative pl-7 pb-9 last:pb-0"
     >
-      {/* Dot */}
+      {/* Dot with glow */}
       <span
         className="absolute left-[-1.25rem] top-[5px] w-2 h-2 rounded-full bg-[var(--color-accent)]"
         style={{
           boxShadow:
-            "0 0 0 3px var(--color-bg), 0 0 0 4.5px rgba(59,130,246,0.35)",
+            "0 0 0 3px var(--color-bg), 0 0 0 4.5px rgba(59,130,246,0.4), 0 0 12px rgba(59,130,246,0.25)",
         }}
       />
 
@@ -42,20 +42,20 @@ function TimelineEntry({
             {entry.org}
           </p>
         </div>
-        <span className="font-mono text-[10.5px] text-[var(--color-dim)] tracking-[0.05em] shrink-0">
+        <span className="font-mono text-[10.5px] text-[var(--color-dim)] tracking-[0.05em] shrink-0 px-[8px] py-[3px] border border-[var(--color-border)] rounded-[2px]">
           {entry.date}
         </span>
       </div>
 
       {isEdu ? (
-        <span className="inline-flex items-center font-mono text-[11px] text-[var(--color-dim)] px-[9px] py-[3px] border border-[var(--color-border)] rounded-[2px]">
+        <span className="inline-flex items-center font-mono text-[11px] text-[var(--color-muted)] px-[9px] py-[4px] border border-[var(--color-border-s)] rounded-[2px] bg-[var(--color-surface)]">
           {entry.note}
         </span>
       ) : (
         <ul className="flex flex-col gap-[7px]">
           {entry.bullets?.map((bullet, i) => (
             <li key={i} className="grid grid-cols-[14px_1fr] gap-x-2 text-[13.5px] leading-[1.65] text-[var(--color-muted)]">
-              <span className="font-mono text-[var(--color-border-s)] pt-[1px] select-none">
+              <span className="font-mono text-[var(--color-accent)] opacity-40 pt-[1px] select-none">
                 —
               </span>
               <span>{bullet}</span>
@@ -87,8 +87,11 @@ function TimelineGroup({
       {/* Vertical line */}
       <div className="relative">
         <div
-          className="absolute left-[3px] top-[6px] bottom-[6px] w-px bg-[var(--color-border)]"
+          className="absolute left-[3px] top-[6px] bottom-[6px] w-px"
           aria-hidden
+          style={{
+            background: "linear-gradient(to bottom, rgba(59,130,246,0.3), rgba(255,255,255,0.06) 60%, transparent)",
+          }}
         />
         {entries.map((entry, i) => (
           <TimelineEntry

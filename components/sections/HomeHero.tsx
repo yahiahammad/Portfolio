@@ -1,14 +1,8 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
-import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-
-const NAV_LINKS = [
-  { label: "Projects", href: "#projects" },
-  { label: "Skills", href: "#skills" },
-  { label: "About", href: "/about" },
-];
+import Navbar from "@/components/Navbar";
 
 const STAT_PILLS = ["24M+ rows processed", "4 shipped products", "3rd year CS"];
 
@@ -65,7 +59,7 @@ function TerminalBlock() {
   }, [reduced]);
 
   return (
-    <div className="font-mono text-[12.5px] bg-[var(--color-surface)] border border-[var(--color-border-s)] rounded-[6px] overflow-hidden shadow-[0_0_40px_rgba(0,0,0,0.4)]">
+    <div className="font-mono text-[12.5px] bg-[var(--color-surface)] border border-[var(--color-border-s)] rounded-[6px] overflow-hidden shadow-[0_0_60px_rgba(0,0,0,0.5),0_0_0_1px_rgba(255,255,255,0.04)]">
       {/* Title bar */}
       <div className="flex items-center gap-[6px] px-4 py-[10px] border-b border-[var(--color-border)] bg-[var(--color-surface-h)]">
         <span className="w-[11px] h-[11px] rounded-full bg-[#ff5f57] opacity-80" />
@@ -164,113 +158,9 @@ function ScrollHint() {
 }
 
 export default function HomeHero() {
-  const [menuOpen, setMenuOpen] = useState(false);
-  const closeMenu = () => setMenuOpen(false);
-
   return (
     <>
-      <nav
-        className="fixed top-0 left-0 right-0 z-50 bg-[rgba(8,8,9,0.80)] backdrop-blur-[16px] saturate-150"
-        aria-label="Main navigation"
-      >
-        <div className="max-w-[1180px] mx-auto px-14 h-[54px] flex items-center justify-between border-b border-[var(--color-border)] max-[640px]:px-6">
-          <span className="font-mono text-[13px] font-medium tracking-[0.04em] text-[var(--color-text)]">
-            YH<span className="text-[var(--color-accent)]">.</span>
-          </span>
-
-          <div className="flex items-center gap-7">
-            {NAV_LINKS.map((link) =>
-              link.href.startsWith("#") ? (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  className="text-[13px] text-[var(--color-muted)] hover:text-[var(--color-text)] transition-colors duration-150 max-[640px]:hidden"
-                >
-                  {link.label}
-                </a>
-              ) : (
-                <Link
-                  key={link.label}
-                  href={link.href}
-                  className="text-[13px] text-[var(--color-muted)] hover:text-[var(--color-text)] transition-colors duration-150 max-[640px]:hidden"
-                >
-                  {link.label}
-                </Link>
-              )
-            )}
-            <a
-              href="/projects/Yahia_Hammad_CV.docx"
-              download
-              className="text-[13px] text-[var(--color-muted)] hover:text-[var(--color-text)] transition-colors duration-150 max-[640px]:hidden"
-            >
-              CV
-            </a>
-            <div className="flex items-center gap-[7px] font-mono text-[11px] text-[var(--color-dim)] max-[640px]:hidden">
-              <span className="w-[6px] h-[6px] rounded-full bg-emerald-400 animate-pulse-dot" aria-hidden="true" />
-              <span>open to work</span>
-            </div>
-
-            <button
-              type="button"
-              onClick={() => setMenuOpen((v) => !v)}
-              aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
-              aria-expanded={menuOpen}
-              aria-controls="mobile-nav"
-              className="hidden max-[640px]:flex items-center justify-center w-8 h-8 -mr-1 text-[var(--color-muted)] hover:text-[var(--color-text)] transition-colors duration-150"
-            >
-              {menuOpen ? (
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                  <path d="M3 3l10 10M13 3L3 13" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
-                </svg>
-              ) : (
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                  <path d="M2 4h12M2 8h12M2 12h12" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
-                </svg>
-              )}
-            </button>
-          </div>
-        </div>
-
-        {menuOpen && (
-          <div id="mobile-nav" className="hidden max-[640px]:block border-b border-[var(--color-border)]">
-            <div className="px-6 py-1 flex flex-col">
-              {NAV_LINKS.map((link) =>
-                link.href.startsWith("#") ? (
-                  <a
-                    key={link.label}
-                    href={link.href}
-                    onClick={closeMenu}
-                    className="text-[13px] text-[var(--color-muted)] hover:text-[var(--color-text)] transition-colors duration-150 py-[13px] border-b border-[var(--color-border)]"
-                  >
-                    {link.label}
-                  </a>
-                ) : (
-                  <Link
-                    key={link.label}
-                    href={link.href}
-                    onClick={closeMenu}
-                    className="text-[13px] text-[var(--color-muted)] hover:text-[var(--color-text)] transition-colors duration-150 py-[13px] border-b border-[var(--color-border)]"
-                  >
-                    {link.label}
-                  </Link>
-                )
-              )}
-              <a
-                href="/projects/Yahia_Hammad_CV.docx"
-                download
-                onClick={closeMenu}
-                className="text-[13px] text-[var(--color-muted)] hover:text-[var(--color-text)] transition-colors duration-150 py-[13px] border-b border-[var(--color-border)]"
-              >
-                CV
-              </a>
-              <div className="flex items-center gap-[7px] font-mono text-[11px] text-[var(--color-dim)] py-[13px]">
-                <span className="w-[6px] h-[6px] rounded-full bg-emerald-400 animate-pulse-dot" aria-hidden="true" />
-                <span>open to work</span>
-              </div>
-            </div>
-          </div>
-        )}
-      </nav>
+      <Navbar activePage="home" />
 
       <section id="main-content" className="min-h-screen flex items-center pt-[54px]">
         <div className="max-w-[1180px] mx-auto px-14 w-full max-[640px]:px-6">
@@ -291,7 +181,7 @@ export default function HomeHero() {
                 initial={{ opacity: 0, y: 14 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.1, ease: [0.4, 0, 0.2, 1] }}
-                className="font-mono font-bold leading-none tracking-[-0.03em] text-[var(--color-text)] mb-[22px]"
+                className="font-mono font-bold leading-none tracking-[-0.03em] mb-[22px] gradient-name"
                 style={{ fontSize: "clamp(42px, 5.6vw, 78px)" }}
               >
                 YAHIA HAMMAD
@@ -316,6 +206,7 @@ export default function HomeHero() {
                 {" · "}ML &amp; Full-Stack{" · "}Third-year CS @ MIU
               </motion.p>
 
+              {/* Stat pills */}
               <motion.div
                 initial={{ opacity: 0, y: 14 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -325,7 +216,7 @@ export default function HomeHero() {
                 {STAT_PILLS.map((s) => (
                   <div
                     key={s}
-                    className="inline-flex items-center gap-[9px] px-[13px] pr-[15px] py-[7px] border border-[var(--color-accent-border)] bg-[var(--color-accent-dim)] font-mono text-[12px] text-[var(--color-text)] rounded-[3px] tracking-[0.025em]"
+                    className="inline-flex items-center gap-[9px] px-[13px] pr-[15px] py-[9px] border border-[var(--color-accent-border)] bg-[var(--color-accent-dim)] font-mono text-[12px] text-[var(--color-text)] rounded-[4px] tracking-[0.025em] shadow-[0_0_16px_rgba(59,130,246,0.06)]"
                   >
                     <span className="text-[var(--color-accent)] opacity-80 select-none" aria-hidden="true">&gt;</span>
                     {s}
@@ -333,6 +224,7 @@ export default function HomeHero() {
                 ))}
               </motion.div>
 
+              {/* CTAs */}
               <motion.div
                 initial={{ opacity: 0, y: 14 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -341,7 +233,7 @@ export default function HomeHero() {
               >
                 <a
                   href="#projects"
-                  className="inline-flex items-center gap-2 px-[26px] py-[11px] bg-[var(--color-accent)] text-white font-medium text-[14px] rounded-[4px] hover:brightness-110 hover:-translate-y-px transition-all duration-[180ms]"
+                  className="btn-glow inline-flex items-center gap-2 px-[26px] py-[11px] bg-[var(--color-accent)] text-white font-medium text-[14px] rounded-[4px] hover:brightness-110 hover:-translate-y-px transition-all duration-[180ms]"
                 >
                   View Projects
                   <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
@@ -349,7 +241,7 @@ export default function HomeHero() {
                   </svg>
                 </a>
                 <a
-                  href="/projects/Yahia_Hammad_CV.docx"
+                  href="/projects/Yahia_Hammad_CV.pdf"
                   download
                   className="inline-flex items-center gap-[7px] px-[22px] py-[10px] bg-transparent text-[var(--color-text)] text-[14px] border border-[var(--color-border-s)] rounded-[4px] hover:border-[var(--color-accent-border)] hover:bg-[var(--color-accent-dim)] hover:-translate-y-px transition-all duration-[180ms]"
                 >

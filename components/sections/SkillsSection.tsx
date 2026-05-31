@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import type { IconType } from "react-icons";
 import {
@@ -184,6 +184,7 @@ function SkillPill({
   const [show, setShow] = useState(false);
   const context = SKILL_CONTEXT[item];
   const Icon = SKILL_ICONS[item];
+  const tooltipId = `tooltip-${item.replace(/[^a-z0-9]/gi, "-").toLowerCase()}`;
   const dimmed =
     activeProject !== null &&
     !(SKILL_PROJECTS[item] ?? []).includes(activeProject);
@@ -191,16 +192,18 @@ function SkillPill({
   return (
     <div
       className="relative inline-flex transition-opacity duration-200"
-      style={{ opacity: dimmed ? 0.2 : 1 }}
+      style={{ opacity: dimmed ? 0.18 : 1 }}
     >
       <span
-        className="flex items-center gap-[6px] font-mono text-[11.5px] text-[var(--color-muted)] px-[11px] py-[6px] border border-[var(--color-border)] rounded-[2px] leading-none transition-colors duration-[180ms] hover:border-[var(--color-accent-border)] hover:text-[var(--color-text)] hover:bg-[var(--color-accent-dim)] cursor-default select-none"
+        role={context ? "button" : undefined}
+        tabIndex={context ? 0 : undefined}
+        aria-label={context ? `${item} — used in: ${context}` : item}
+        aria-describedby={context ? tooltipId : undefined}
+        className="flex items-center gap-[6px] font-mono text-[11.5px] text-[var(--color-muted)] px-[11px] py-[7px] border border-[var(--color-border)] rounded-[3px] leading-none transition-colors duration-[180ms] hover:border-[var(--color-accent-border)] hover:text-[var(--color-text)] hover:bg-[var(--color-accent-dim)] cursor-default select-none"
         onMouseEnter={() => context && setShow(true)}
         onMouseLeave={() => setShow(false)}
         onFocus={() => context && setShow(true)}
         onBlur={() => setShow(false)}
-        tabIndex={context ? 0 : undefined}
-        aria-label={context ? `${item} — used in: ${context}` : item}
       >
         {Icon && (
           <Icon
@@ -212,22 +215,30 @@ function SkillPill({
         {item}
       </span>
 
-      {show && context && (
-        <div
-          className="absolute bottom-full left-1/2 mb-[9px] z-20 pointer-events-none"
-          style={{ transform: "translateX(-50%)" }}
-        >
-          <div className="w-max max-w-[200px] px-[10px] py-[7px] bg-[var(--color-surface-h)] border border-[var(--color-border-s)] rounded-[3px] shadow-[0_4px_16px_rgba(0,0,0,0.5)]">
-            <p className="font-mono text-[10px] text-[var(--color-accent)] tracking-[0.04em] leading-[1.5]">
-              {context}
-            </p>
-          </div>
-          <div
-            className="absolute left-1/2 -bottom-[5px] w-[9px] h-[9px] border-r border-b border-[var(--color-border-s)] bg-[var(--color-surface-h)] rotate-45"
-            style={{ transform: "translateX(-50%) rotate(45deg)" }}
-          />
-        </div>
-      )}
+      <AnimatePresence>
+        {show && context && (
+          <motion.div
+            id={tooltipId}
+            role="tooltip"
+            key="tooltip"
+            initial={{ opacity: 0, y: 4, x: "-50%" }}
+            animate={{ opacity: 1, y: 0, x: "-50%" }}
+            exit={{ opacity: 0, y: 4, x: "-50%" }}
+            transition={{ duration: 0.14, ease: [0.4, 0, 0.2, 1] }}
+            className="absolute bottom-full left-1/2 mb-[9px] z-20 pointer-events-none"
+          >
+            <div className="w-max max-w-[200px] px-[10px] py-[7px] bg-[var(--color-surface-h)] border border-[var(--color-border-s)] rounded-[3px] shadow-[0_4px_20px_rgba(0,0,0,0.6),0_0_0_1px_rgba(59,130,246,0.1)]">
+              <p className="font-mono text-[10px] text-[var(--color-accent)] tracking-[0.04em] leading-[1.5]">
+                {context}
+              </p>
+            </div>
+            <div
+              className="absolute left-1/2 -bottom-[5px] w-[9px] h-[9px] border-r border-b border-[var(--color-border-s)] bg-[var(--color-surface-h)] rotate-45"
+              style={{ transform: "translateX(-50%) rotate(45deg)" }}
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
@@ -289,10 +300,10 @@ export default function SkillsSection() {
               type="button"
               onClick={() => toggle(p.slug)}
               aria-pressed={activeProject === p.slug}
-              className={`font-mono text-[11px] px-[10px] py-[5px] rounded-[2px] border transition-colors duration-150 ${
+              className={`font-mono text-[11px] px-[12px] py-[7px] rounded-full border transition-all duration-150 ${
                 activeProject === p.slug
-                  ? "border-[var(--color-accent)] bg-[var(--color-accent-dim)] text-[var(--color-accent)]"
-                  : "border-[var(--color-border-s)] text-[var(--color-dim)] hover:text-[var(--color-text)] hover:border-[var(--color-border-s)]"
+                  ? "border-[var(--color-accent)] bg-[var(--color-accent-dim)] text-[var(--color-accent)] shadow-[0_0_12px_rgba(59,130,246,0.15)]"
+                  : "border-[var(--color-border-s)] text-[var(--color-dim)] hover:text-[var(--color-text)] hover:border-[var(--color-border-s)] hover:bg-[var(--color-surface-h)]"
               }`}
             >
               {p.label}
@@ -302,7 +313,7 @@ export default function SkillsSection() {
             <button
               type="button"
               onClick={() => setActiveProject(null)}
-              className="font-mono text-[11px] text-[var(--color-dim)] hover:text-[var(--color-text)] transition-colors duration-150 px-[6px]"
+              className="font-mono text-[11px] text-[var(--color-dim)] hover:text-[var(--color-text)] transition-colors duration-150 px-[8px] py-[7px]"
               aria-label="Clear filter"
             >
               × clear

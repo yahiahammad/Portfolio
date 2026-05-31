@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 const LINKS = [
   {
@@ -31,7 +32,7 @@ const LINKS = [
   },
   {
     label: "cv.pdf",
-    href: "/projects/Yahia_Hammad_CV.docx",
+    href: "/projects/Yahia_Hammad_CV.pdf",
     icon: (
       <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
         <path
@@ -62,14 +63,19 @@ const fadeUp = (delay = 0) => ({
 export default function BioColumn() {
   return (
     <aside className="sticky top-20">
-      {/* Photo placeholder */}
+      {/* Photo */}
       <motion.div
         {...fadeUp(0.1)}
-        className="w-full mb-8 rounded-[3px] overflow-hidden border border-[var(--color-border-s)] aspect-[4/5] bg-[var(--color-surface)] flex items-center justify-center"
+        className="w-full mb-8 rounded-[4px] overflow-hidden border border-[var(--color-border-s)] aspect-[4/5] relative bg-[var(--color-surface)]"
       >
-        <span className="font-mono text-[11px] text-[var(--color-dim)] tracking-[0.08em]">
-          photo
-        </span>
+        <Image
+          src="/projects/1689++.jpg"
+          alt="Yahia Hammad"
+          fill
+          priority
+          className="object-cover object-top"
+          sizes="(max-width: 860px) 100vw, 300px"
+        />
       </motion.div>
 
       <motion.p {...fadeUp(0.15)} className="font-mono text-[18px] font-bold tracking-[-0.02em] mb-1">
@@ -105,7 +111,7 @@ export default function BioColumn() {
             download={l.download}
             target={l.external ? "_blank" : undefined}
             rel={l.external ? "noopener noreferrer" : undefined}
-            className="inline-flex items-center gap-[6px] font-mono text-[11px] text-[var(--color-dim)] tracking-[0.05em] px-3 py-[6px] border border-[var(--color-border-s)] rounded-[2px] hover:text-[var(--color-text)] hover:border-[var(--color-accent-border)] transition-colors duration-150"
+            className="inline-flex items-center gap-[6px] font-mono text-[11px] text-[var(--color-muted)] tracking-[0.05em] px-3 py-[7px] border border-[var(--color-border-s)] rounded-[3px] hover:text-[var(--color-text)] hover:border-[var(--color-accent-border)] hover:bg-[var(--color-accent-dim)] hover:shadow-[0_0_12px_rgba(59,130,246,0.12)] transition-all duration-150"
           >
             {l.icon}
             {l.label}

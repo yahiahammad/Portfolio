@@ -21,6 +21,7 @@ function ProjectCard({
 
   const hasImage = project.image && !imgFailed;
   const showFeaturedLayout = featured && hasImage;
+  const clickable = !!project.hasCase;
 
   const inner = (
     <motion.article
@@ -28,8 +29,11 @@ function ProjectCard({
       initial={{ opacity: 0, y: 12 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.45, delay: index * 0.07, ease: [0.4, 0, 0.2, 1] }}
-      className="group relative bg-[var(--color-bg)] overflow-hidden cursor-default hover:bg-[var(--color-surface-h)] transition-colors duration-[220ms]"
+      className={`group relative bg-[var(--color-bg)] overflow-hidden card-glow hover:bg-[var(--color-surface-h)] transition-colors duration-[220ms] ${
+        clickable ? "cursor-pointer" : "cursor-default"
+      }`}
     >
+      {/* Top accent line reveal */}
       <span className="absolute top-0 left-0 right-0 h-[2px] bg-[var(--color-accent)] scale-x-0 origin-left group-hover:scale-x-100 transition-transform duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] z-10" />
 
       {showFeaturedLayout ? (
@@ -45,6 +49,8 @@ function ProjectCard({
               className="object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
               sizes="55vw"
             />
+            {/* Subtle gradient overlay on hover */}
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent to-[rgba(8,8,9,0.15)] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
           </div>
 
           <div className="p-12 max-[768px]:p-7 flex flex-col justify-between">
@@ -53,7 +59,7 @@ function ProjectCard({
                 <span className="font-mono text-[11px] text-[var(--color-dim)] tracking-[0.06em]">
                   {project.id}
                 </span>
-                <span className="font-mono text-[10px] text-[var(--color-accent)] tracking-[0.10em] uppercase text-right leading-[1.5]">
+                <span className="font-mono text-[10px] text-[var(--color-accent)] tracking-[0.10em] uppercase text-right leading-[1.5] bg-[var(--color-accent-dim)] px-[8px] py-[3px] rounded-[2px] border border-[var(--color-accent-border)]">
                   {project.type}
                 </span>
               </div>
@@ -79,8 +85,15 @@ function ProjectCard({
 
             {project.hasCase && (
               <div className="mt-[28px] pt-[20px] border-t border-[var(--color-border)]">
-                <span className="font-mono text-[11px] text-[var(--color-accent)] tracking-[0.06em]">
-                  Case study →
+                <span className="inline-flex items-center gap-[7px] font-mono text-[11px] text-[var(--color-accent)] tracking-[0.06em]">
+                  View case study
+                  <svg
+                    width="11" height="11" viewBox="0 0 11 11" fill="none"
+                    aria-hidden="true"
+                    className="transition-transform duration-200 group-hover:translate-x-[3px]"
+                  >
+                    <path d="M2 5.5h7M5.5 2.5l3 3-3 3" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
                 </span>
               </div>
             )}
@@ -99,6 +112,7 @@ function ProjectCard({
                 className="object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
                 sizes="(max-width: 768px) 100vw, 33vw"
               />
+              <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[rgba(8,8,9,0.1)] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </div>
           )}
 
@@ -107,7 +121,7 @@ function ProjectCard({
               <span className="font-mono text-[11px] text-[var(--color-dim)] tracking-[0.06em]">
                 {project.id}
               </span>
-              <span className="font-mono text-[10px] text-[var(--color-accent)] tracking-[0.10em] uppercase text-right leading-[1.5]">
+              <span className="font-mono text-[10px] text-[var(--color-accent)] tracking-[0.10em] uppercase text-right leading-[1.5] bg-[var(--color-accent-dim)] px-[8px] py-[3px] rounded-[2px] border border-[var(--color-accent-border)]">
                 {project.type}
               </span>
             </div>
@@ -132,8 +146,15 @@ function ProjectCard({
 
             {project.hasCase && (
               <div className="mt-[22px] pt-[18px] border-t border-[var(--color-border)]">
-                <span className="font-mono text-[11px] text-[var(--color-accent)] tracking-[0.06em]">
-                  Case study →
+                <span className="inline-flex items-center gap-[7px] font-mono text-[11px] text-[var(--color-accent)] tracking-[0.06em]">
+                  View case study
+                  <svg
+                    width="11" height="11" viewBox="0 0 11 11" fill="none"
+                    aria-hidden="true"
+                    className="transition-transform duration-200 group-hover:translate-x-[3px]"
+                  >
+                    <path d="M2 5.5h7M5.5 2.5l3 3-3 3" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
                 </span>
               </div>
             )}

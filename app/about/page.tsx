@@ -36,14 +36,14 @@ export default function AboutPage() {
         {/* Footer */}
         <footer className="border-t border-[var(--color-border)]">
           <div className="max-w-[1180px] mx-auto px-14 py-[30px] flex items-center justify-between max-[640px]:flex-col max-[640px]:gap-3 max-[640px]:items-start max-[640px]:px-6">
-            <span className="font-mono text-[11px] text-[var(--color-dim)] tracking-[0.04em]">
+            <span className="font-mono text-[11px] text-[var(--color-muted)] tracking-[0.04em]">
               yahiamhammad@gmail.com · Cairo, EG
             </span>
             <div className="flex gap-[22px]">
               {[
                 { label: "github", href: "https://github.com/yahiahammad" },
                 { label: "portfolio", href: "/" },
-                { label: "cv.pdf", href: "/projects/Yahia_Hammad_CV.docx", download: true },
+                { label: "cv.pdf", href: "/projects/Yahia_Hammad_CV.pdf", download: true },
               ].map((l) => (
                 <a
                   key={l.label}
@@ -51,7 +51,7 @@ export default function AboutPage() {
                   download={l.download}
                   target={l.href.startsWith("http") ? "_blank" : undefined}
                   rel={l.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                  className="font-mono text-[11px] text-[var(--color-dim)] tracking-[0.04em] hover:text-[var(--color-accent)] transition-colors duration-150"
+                  className="font-mono text-[11px] text-[var(--color-muted)] tracking-[0.04em] hover:text-[var(--color-accent)] transition-colors duration-150"
                 >
                   {l.label}
                 </a>

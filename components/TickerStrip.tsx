@@ -5,7 +5,7 @@ const ITEMS = [...PROJECTS, ...PROJECTS];
 export default function TickerStrip() {
   return (
     <div
-      className="border-y border-[var(--color-border)] overflow-hidden py-[13px]"
+      className="border-y border-[var(--color-border)] overflow-hidden py-[13px] ticker-wrap"
       aria-hidden="true"
     >
       <div className="animate-ticker flex w-max gap-[56px]">

@@ -30,7 +30,28 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Skip-to-content link — visible only on keyboard focus */
+/* ─── Text selection ─── */
+::selection {
+  background: rgba(59, 130, 246, 0.22);
+  color: var(--color-text);
+}
+
+/* ─── Scrollbar ─── */
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.22);
+}
+
+/* ─── Skip link ─── */
 .skip-link {
   position: fixed;
   top: -100%;
@@ -52,12 +73,80 @@ body {
   outline-offset: 2px;
 }
 
-/* Global keyboard focus ring */
+/* ─── Focus ring ─── */
 :focus-visible {
   outline: 2px solid var(--color-accent);
   outline-offset: 2px;
   border-radius: 2px;
 }
+
+/* ─── Gradient name ─── */
+.gradient-name {
+  background: linear-gradient(
+    to right,
+    #f1f1f3 0%,
+    rgba(180, 210, 255, 0.92) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ─── Button primary glow ─── */
+.btn-glow:hover {
+  box-shadow: 0 4px 24px rgba(59, 130, 246, 0.40), 0 0 0 1px rgba(59, 130, 246, 0.25);
+}
+.btn-glow:active {
+  box-shadow: 0 2px 12px rgba(59, 130, 246, 0.30);
+}
+
+/* ─── Card hover glow ─── */
+.card-glow {
+  transition: box-shadow 0.25s ease;
+}
+.card-glow:hover {
+  box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.22), 0 8px 48px rgba(59, 130, 246, 0.07);
+}
+
+/* ─── Nav link underline ─── */
+.nav-link-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--color-accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.2s ease;
+}
+.nav-link-underline:hover::after {
+  transform: scaleX(1);
+}
+.nav-link-underline.active::after {
+  transform: scaleX(1);
+}
+
+/* ─── Ticker fade masks ─── */
+.ticker-wrap {
+  -webkit-mask-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    black 8%,
+    black 92%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    black 8%,
+    black 92%,
+    transparent 100%
+  );
+}
+
+/* ─── Animations ─── */
 
 @keyframes pulse-dot {
   0%, 100% { opacity: 1; }
@@ -69,29 +158,23 @@ body {
   50% { opacity: 0; }
 }
 
-.animate-pulse-dot {
-  animation: pulse-dot 2.4s ease-in-out infinite;
-}
-
-/* Respect OS reduced-motion preference */
-@media (prefers-reduced-motion: reduce) {
-  .animate-pulse-dot {
-    animation: none;
-    opacity: 0.8;
-  }
-  @keyframes blink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 1; }
-  }
-}
-
-section[id] {
-  scroll-margin-top: 70px;
-}
-
 @keyframes ticker {
   from { transform: translateX(0); }
   to   { transform: translateX(-50%); }
+}
+
+@keyframes scroll-bounce {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(6px); }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+.animate-pulse-dot {
+  animation: pulse-dot 2.4s ease-in-out infinite;
 }
 
 .animate-ticker {
@@ -101,21 +184,32 @@ section[id] {
   animation-play-state: paused;
 }
 
-@keyframes scroll-bounce {
-  0%, 100% { transform: translateY(0); }
-  50%       { transform: translateY(6px); }
-}
 .animate-scroll-bounce {
   animation: scroll-bounce 1.8s ease-in-out infinite;
 }
 
+/* ─── Reduced motion ─── */
 @media (prefers-reduced-motion: reduce) {
+  .animate-pulse-dot {
+    animation: none;
+    opacity: 0.8;
+  }
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 1; }
+  }
   .animate-ticker,
   .animate-scroll-bounce {
     animation: none;
   }
 }
 
+/* ─── Section scroll margin ─── */
+section[id] {
+  scroll-margin-top: 70px;
+}
+
+/* ─── Background grid ─── */
 .bg-grid-lines {
   background-image:
     linear-gradient(var(--color-border) 1px, transparent 1px),
